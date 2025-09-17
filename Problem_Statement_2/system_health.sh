@@ -33,8 +33,8 @@ fi
 
 
 while read -r line; do
-    usage=$(echo "$line" | awk '{print $5}' | tr -d '%')
-    mount_point=$(echo "$line" | awk '{print $6}')
+    usage=$(echo "$line" | awk '{print $1}' | tr -d '%')
+    mount_point=$(echo "$line" | awk '{print $2}')
     if [ "$usage" -gt "$DISK_THRESHOLD" ]; then
         log_alert "ALERT: Disk usage high on $mount_point at ${usage}%"
     fi
